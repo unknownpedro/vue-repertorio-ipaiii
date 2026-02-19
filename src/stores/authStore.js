@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
-import { auth } from '../firebase'; // Verifique se o caminho está certo
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from '../firebase';
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -23,6 +24,20 @@ export const useAuthStore = defineStore('auth', {
     async logout() {
       await signOut(auth);
       this.user = null;
+    },
+    async register(email, password, name) {
+    // 1. Cria o usuário no Auth
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    
+    // 2. Cria o documento do usuário no Firestore com a role padrão
+    await setDoc(doc(db, "users", user.uid), {
+      name: name,
+      email: email,
+      role: 'user', // Todo mundo começa como user
+      createdAt: new Date()
+    });
+      this.user = user;
     }
   }
 });
+

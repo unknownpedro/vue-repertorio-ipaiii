@@ -10,9 +10,19 @@ const routes = [
     component: LoginView
   },
   {
+    path: '/register',
+    name: 'register',
+    component: () => import('../pages/RegisterView.vue')
+  },
+  {
+    path: '/esqueci-senha',
+    name: 'esqueci-senha',
+    component: () => import('../pages/ForgotPassword.vue')
+  },
+  {
     path: '/home',
     name: 'home',
-    component: () => import('../pages/HomeView.vue'), // Exemplo de página protegida
+    component: () => import('../pages/HomeView.vue'),
     meta: { requiresAuth: true }
   },
   {

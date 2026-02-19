@@ -56,7 +56,8 @@ async function handleLogin() {
           required 
         />
       </div>
-
+      <p><router-link to="/esqueci-senha">Esqueci minha senha</router-link></p>
+      <br>
       <p v-if="errorMsg" class="error-text">{{ errorMsg }}</p>
 
       <button :disabled="isLoading" type="submit">
