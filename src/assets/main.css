@@ -1,0 +1,25 @@
+/* src/assets/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9fafb; /* Um cinza bem claro que combina com a Inter */
+  color: #111827;
+}
+
+/* Garante que inputs e botões também usem a Inter */
+input, button, textarea, select {
+  font-family: inherit;
+}
