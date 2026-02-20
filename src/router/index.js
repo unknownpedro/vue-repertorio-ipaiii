@@ -1,7 +1,7 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/authStore'; // Verifique o nome do arquivo
-import LoginView from '../pages/LoginView.vue'; // Verifique o caminho da sua página
+import LoginView from '../pages/LoginView.vue'; 
 
 const routes = [
   {
@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated) {
     next('/login');
   } else if (to.path === '/login' && isAuthenticated) {
-    next('/dashboard');
+    next('/home');
   } else {
     next();
   }

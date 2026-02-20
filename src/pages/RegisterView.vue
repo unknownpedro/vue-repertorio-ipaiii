@@ -24,7 +24,7 @@ async function handleRegister() {
   isLoading.value = true
   try {
     await authStore.register(email.value, password.value, name.value)
-    router.push('/dashboard')
+    router.push('/home')
   } catch (error) {
     errorMsg.value = 'Erro ao criar conta. Verifique os dados ou se o e-mail já existe.'
   } finally {
@@ -36,6 +36,7 @@ async function handleRegister() {
 <template>
   <div class="login-container"> <form @submit.prevent="handleRegister" class="login-card">
       <h1>Criar Conta</h1>
+      <br>
       
       <div class="input-group">
         <label>Nome Completo</label>
@@ -64,7 +65,7 @@ async function handleRegister() {
       </button>
       
       <p class="footer-link">
-        Já tem uma conta? <router-link to="/login">Faça login</router-link>
+        Já tem uma conta? <router-link class="inlinedecoration"to="/login">Faça login</router-link>
       </p>
     </form>
   </div>
@@ -76,14 +77,16 @@ async function handleRegister() {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #121412;
 }
 
 .login-card {
-  background-color: white;
+  background: rgb(0, 0, 0);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
 .input-group {
@@ -93,20 +96,43 @@ async function handleRegister() {
 .input-group label {
   display: block;
   margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .input-group input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #42b883;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:disabled {
+  background-color: #a8d5c2;
+  cursor: not-allowed;
+}
 .error-text {
   color: red;
 }
 
 .footer-link {
   margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.inlinedecoration {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #227c35;
 }
 </style>

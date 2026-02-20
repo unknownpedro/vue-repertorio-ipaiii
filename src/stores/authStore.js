@@ -6,6 +6,8 @@ import { doc, setDoc } from 'firebase/firestore';
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: null,
+    role: null,
+    loading: true
   }),
   actions: {
     // ESSA É A FUNÇÃO QUE ESTAVA FALTANDO:
@@ -37,6 +39,28 @@ export const useAuthStore = defineStore('auth', {
       createdAt: new Date()
     });
       this.user = user;
+    },
+    async fetchUserRole(uid) {
+      const db = getFirestore();
+      const docRef = doc(db, "users", uid);
+      const docSnap = await getDoc(docRef);
+      
+      if (docSnap.exists()) {
+        this.role = docSnap.data().role;
+      }
+    },
+    initialize() {
+      const auth = getAuth();
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          this.user = user;
+          await this.fetchUserRole(user.uid);
+        } else {
+          this.user = null;
+          this.role = null;
+        }
+        this.loading = false;
+      });
     }
   }
 });

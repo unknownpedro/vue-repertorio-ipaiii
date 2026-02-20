@@ -18,7 +18,7 @@ async function handleLogin() {
   try {
     await authStore.login(email.value, password.value)
     // Se deu certo, manda para o Dashboard
-    router.push('/dashboard')
+    router.push('/home')
   } catch (error) {
     // Tratamento de erros comuns do Firebase
     if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
@@ -36,6 +36,7 @@ async function handleLogin() {
   <div class="login-container">
     <form @submit.prevent="handleLogin" class="login-card">
       <h1>Entrar</h1>
+      <br>
       
       <div class="input-group">
         <label>E-mail</label>
@@ -56,7 +57,7 @@ async function handleLogin() {
           required 
         />
       </div>
-      <p><router-link to="/esqueci-senha">Esqueci minha senha</router-link></p>
+      <p><router-link class="inlinedecoration" to="/esqueci-senha">Esqueci minha senha</router-link></p>
       <br>
       <p v-if="errorMsg" class="error-text">{{ errorMsg }}</p>
 
@@ -65,7 +66,7 @@ async function handleLogin() {
       </button>
       
       <p class="footer-link">
-        Não tem uma conta? <router-link to="/register">Cadastre-se</router-link>
+        Não tem uma conta? <router-link class="inlinedecoration" to="/register">Cadastre-se</router-link>
       </p>
     </form>
   </div>
@@ -77,11 +78,11 @@ async function handleLogin() {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #121412;
 }
 
 .login-card {
-  background: white;
+  background: rgb(0, 0, 0);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -132,5 +133,11 @@ button:disabled {
   margin-top: 1rem;
   text-align: center;
   font-size: 0.9rem;
+}
+
+.inlinedecoration {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #227c35;
 }
 </style>
