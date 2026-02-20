@@ -17,10 +17,8 @@ async function handleLogin() {
 
   try {
     await authStore.login(email.value, password.value)
-    // Se deu certo, manda para o Dashboard
     router.push('/home')
   } catch (error) {
-    // Tratamento de erros comuns do Firebase
     if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
       errorMsg.value = 'E-mail ou senha inválidos.'
     } else {

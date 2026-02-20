@@ -60,12 +60,14 @@ async function handleRegister() {
 
       <p v-if="errorMsg" class="error-text">{{ errorMsg }}</p>
 
+      <br>
+
       <button :disabled="isLoading" type="submit">
         {{ isLoading ? 'Criando conta...' : 'Cadastrar' }}
       </button>
       
       <p class="footer-link">
-        Já tem uma conta? <router-link class="inlinedecoration"to="/login">Faça login</router-link>
+        Já tem uma conta? <router-link class="inlinedecoration" to="/login">Faça login</router-link>
       </p>
     </form>
   </div>
