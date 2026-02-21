@@ -3,7 +3,10 @@
 
 :root {
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  
+  --bg-color: #000;
+  --text-color: #ffffff;
+  --input-bg: #1a1a1a;
+  --border-color: #333;
 }
 
 * {
@@ -12,15 +15,23 @@
   box-sizing: border-box;
 }
 
+body.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #000;
+    --input-bg: #f0f0f0;
+    --border-color: #ccc;
+}
+
 body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Garante que inputs e botões também usem a Inter */
 input, button, textarea, select {
   font-family: inherit;
 }

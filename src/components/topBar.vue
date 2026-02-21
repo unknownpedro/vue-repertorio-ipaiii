@@ -1,8 +1,10 @@
 <template>
     <div class="top-bar">
         <div class="top-bar-left">
-            <a href="#" class="logo">MyApp</a>
+            <a href="/home" class="logo">MyApp</a>
+            
         </div>
+        <a href="/lista_de_musicas" class="logo">Lista de Músicas</a>
         <div class="top-bar-right">
             <nav>
                 <ul>
@@ -25,8 +27,20 @@
   color: rgb(0, 0, 0);
 }
 
+.top-bar-left .a {
+  gap: 50px;
+}
+
+.logo {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
 .top-bar-left .logo {
   color: rgb(0, 0, 0);
+  font-weight: bold;
   text-decoration: none;
 }
 

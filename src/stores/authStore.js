@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { auth, db } from '../firebase'; // Certifique-se que o caminho está correto
+import { auth, db } from '@/firebase'; 
 import { 
   signInWithEmailAndPassword, 
   signOut, 

@@ -20,6 +20,16 @@ const routes = [
     component: () => import('../pages/ForgotPassword.vue')
   },
   {
+    path: '/lista_de_musicas',
+    name: 'lista_de_musicas',
+    component: () => import('../pages/ListaMusica.vue')
+  },
+  {
+    path: '/view-letras/:id', // O ":id" é o que o useRoute() vai ler
+    name: 'ViewLetras',
+    component: () => import('@/pages/ViewLetras.vue')
+  },
+  {
     path: '/home',
     name: 'home',
     component: () => import('../pages/HomeView.vue'),
