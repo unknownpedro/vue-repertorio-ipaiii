@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { db } from '@/firebase'; // Ajuste o caminho conforme seu projeto
+import { db } from '@/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import TopBar from '@/components/topBar.vue';
 
-// 1. Definição da Interface para o TypeScript
 interface Musica {
     nome: string;
     artista: string;
@@ -19,7 +18,6 @@ const musica = ref<Musica | null>(null);
 const isLoading = ref(true);
 
 async function carregarMusica() {
-    // 2. Pegar o ID da rota (ex: /musica/:id) em vez da query string
     const musicaId = route.params.id as string;
 
     if (!musicaId) {
@@ -34,12 +32,9 @@ async function carregarMusica() {
         if (docSnap.exists()) {
             musica.value = docSnap.data() as Musica;
             
-            // Alterar o título da aba
             document.title = `Letra - ${musica.value.nome}`;
         } else {
-            console.error("Música não encontrada!");
-            // Opcional: redirecionar se não existir
-            // router.push('/404');
+            console.error("Música não encontrada!");           
         }
     } catch (error) {
         console.error("Erro ao carregar letra:", error);
@@ -96,10 +91,10 @@ onMounted(() => {
 }
 
 .letra-corpo {
-    font-family: 'Inter', sans-serif; /* Ou sua fonte preferida */
+    font-family: 'Inter', sans-serif; 
     font-size: 1.2rem;
     line-height: 1.6;
-    white-space: pre-wrap; /* Importante para quebrar linha se o texto for longo */
+    white-space: pre-wrap; 
     background: #1a1a1a;
     padding: 2rem;
     border-radius: 8px;
