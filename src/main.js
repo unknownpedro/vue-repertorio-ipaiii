@@ -15,6 +15,6 @@ app.use(router);
 
 // IMPORTANTE: Inicializa a store antes de montar o app
 const authStore = useAuthStore();
-authStore.init().then(() => {
+authStore.initialize().then(() => {
   app.mount('#app');
 });

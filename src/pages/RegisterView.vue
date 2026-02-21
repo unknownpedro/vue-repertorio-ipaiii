@@ -23,11 +23,12 @@ async function handleRegister() {
 
   isLoading.value = true
   try {
-    await authStore.register(email.value, password.value, name.value)
-    router.push('/home')
-  } catch (error) {
-    errorMsg.value = 'Erro ao criar conta. Verifique os dados ou se o e-mail já existe.'
-  } finally {
+  await authStore.register(email.value, password.value, name.value)
+  router.push('/home')
+} catch (error) {
+  console.error("Erro completo:", error)
+  errorMsg.value = 'Erro ao criar conta.'
+} finally {
     isLoading.value = false
   }
 }
