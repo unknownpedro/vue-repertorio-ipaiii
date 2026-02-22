@@ -10,6 +10,7 @@ interface Musica {
     artista: string;
     tom: string;
     letra: string;
+    link: string;
 }
 
 const route = useRoute();
@@ -52,9 +53,11 @@ onMounted(() => {
     <TopBar />
 
     <div class="view-container">
-        <div v-if="isLoading" class="loading">Carregando letra...</div>
+        <div v-if="isLoading" class="loading"></div>
+        
 
         <div v-else-if="musica" class="conteudo-musica">
+            
             <header class="musica-header">
                 <h1 id="viewTitulo">{{ musica.nome }}</h1>
                 <p id="viewArtista"><strong>Artista:</strong> {{ musica.artista || 'Não informado' }}</p>
@@ -77,6 +80,33 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.loading {
+  /* Tamanho e espessura da borda */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #b5cabd;
+  border-bottom-color: #3b7545; /* A cor do detalhe que gira */
+  border-radius: 50%;
+  display: flex;
+  box-sizing: border-box;
+  
+  /* Chamada da animação: nome, duração, tipo de transição e repetição */
+  animation: rotation 1s linear infinite;
+}
+
+/* Definição do movimento */
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .view-container {
     padding: 2rem;
     max-width: 800px;
