@@ -85,6 +85,7 @@ onMounted(buscarEscala);
 </template>
 
 <style scoped>
+
 .escala-card {
     background: #1a1a1a;
     border: 1px solid #333;

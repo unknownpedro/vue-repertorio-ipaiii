@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import TopBar from '@/components/topBar.vue';
+import TopBar from '@/components/TopBar.vue';
 import { db } from '@/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 

@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { db } from '@/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import TopBar from '@/components/topBar.vue';
+import TopBar from '@/components/TopBar.vue';
 
 interface Musica {
     nome: string;
